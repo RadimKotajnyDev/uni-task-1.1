@@ -11,13 +11,69 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as KontaktImport } from './routes/kontakt'
+import { Route as GalerieImport } from './routes/galerie'
+import { Route as BlogImport } from './routes/blog'
 import { Route as IndexImport } from './routes/index'
+import { Route as KurzyTypescriptImport } from './routes/kurzy/typescript'
+import { Route as KurzyReactImport } from './routes/kurzy/react'
+import { Route as KurzyNextjsImport } from './routes/kurzy/nextjs'
+import { Route as KurzyJavascriptImport } from './routes/kurzy/javascript'
+import { Route as KurzyGraphqlImport } from './routes/kurzy/graphql'
 
 // Create/Update Routes
+
+const KontaktRoute = KontaktImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GalerieRoute = GalerieImport.update({
+  id: '/galerie',
+  path: '/galerie',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogRoute = BlogImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const KurzyTypescriptRoute = KurzyTypescriptImport.update({
+  id: '/kurzy/typescript',
+  path: '/kurzy/typescript',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const KurzyReactRoute = KurzyReactImport.update({
+  id: '/kurzy/react',
+  path: '/kurzy/react',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const KurzyNextjsRoute = KurzyNextjsImport.update({
+  id: '/kurzy/nextjs',
+  path: '/kurzy/nextjs',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const KurzyJavascriptRoute = KurzyJavascriptImport.update({
+  id: '/kurzy/javascript',
+  path: '/kurzy/javascript',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const KurzyGraphqlRoute = KurzyGraphqlImport.update({
+  id: '/kurzy/graphql',
+  path: '/kurzy/graphql',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +88,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogImport
+      parentRoute: typeof rootRoute
+    }
+    '/galerie': {
+      id: '/galerie'
+      path: '/galerie'
+      fullPath: '/galerie'
+      preLoaderRoute: typeof GalerieImport
+      parentRoute: typeof rootRoute
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktImport
+      parentRoute: typeof rootRoute
+    }
+    '/kurzy/graphql': {
+      id: '/kurzy/graphql'
+      path: '/kurzy/graphql'
+      fullPath: '/kurzy/graphql'
+      preLoaderRoute: typeof KurzyGraphqlImport
+      parentRoute: typeof rootRoute
+    }
+    '/kurzy/javascript': {
+      id: '/kurzy/javascript'
+      path: '/kurzy/javascript'
+      fullPath: '/kurzy/javascript'
+      preLoaderRoute: typeof KurzyJavascriptImport
+      parentRoute: typeof rootRoute
+    }
+    '/kurzy/nextjs': {
+      id: '/kurzy/nextjs'
+      path: '/kurzy/nextjs'
+      fullPath: '/kurzy/nextjs'
+      preLoaderRoute: typeof KurzyNextjsImport
+      parentRoute: typeof rootRoute
+    }
+    '/kurzy/react': {
+      id: '/kurzy/react'
+      path: '/kurzy/react'
+      fullPath: '/kurzy/react'
+      preLoaderRoute: typeof KurzyReactImport
+      parentRoute: typeof rootRoute
+    }
+    '/kurzy/typescript': {
+      id: '/kurzy/typescript'
+      path: '/kurzy/typescript'
+      fullPath: '/kurzy/typescript'
+      preLoaderRoute: typeof KurzyTypescriptImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +151,100 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/galerie': typeof GalerieRoute
+  '/kontakt': typeof KontaktRoute
+  '/kurzy/graphql': typeof KurzyGraphqlRoute
+  '/kurzy/javascript': typeof KurzyJavascriptRoute
+  '/kurzy/nextjs': typeof KurzyNextjsRoute
+  '/kurzy/react': typeof KurzyReactRoute
+  '/kurzy/typescript': typeof KurzyTypescriptRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/galerie': typeof GalerieRoute
+  '/kontakt': typeof KontaktRoute
+  '/kurzy/graphql': typeof KurzyGraphqlRoute
+  '/kurzy/javascript': typeof KurzyJavascriptRoute
+  '/kurzy/nextjs': typeof KurzyNextjsRoute
+  '/kurzy/react': typeof KurzyReactRoute
+  '/kurzy/typescript': typeof KurzyTypescriptRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/galerie': typeof GalerieRoute
+  '/kontakt': typeof KontaktRoute
+  '/kurzy/graphql': typeof KurzyGraphqlRoute
+  '/kurzy/javascript': typeof KurzyJavascriptRoute
+  '/kurzy/nextjs': typeof KurzyNextjsRoute
+  '/kurzy/react': typeof KurzyReactRoute
+  '/kurzy/typescript': typeof KurzyTypescriptRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/blog'
+    | '/galerie'
+    | '/kontakt'
+    | '/kurzy/graphql'
+    | '/kurzy/javascript'
+    | '/kurzy/nextjs'
+    | '/kurzy/react'
+    | '/kurzy/typescript'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/blog'
+    | '/galerie'
+    | '/kontakt'
+    | '/kurzy/graphql'
+    | '/kurzy/javascript'
+    | '/kurzy/nextjs'
+    | '/kurzy/react'
+    | '/kurzy/typescript'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog'
+    | '/galerie'
+    | '/kontakt'
+    | '/kurzy/graphql'
+    | '/kurzy/javascript'
+    | '/kurzy/nextjs'
+    | '/kurzy/react'
+    | '/kurzy/typescript'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRoute
+  GalerieRoute: typeof GalerieRoute
+  KontaktRoute: typeof KontaktRoute
+  KurzyGraphqlRoute: typeof KurzyGraphqlRoute
+  KurzyJavascriptRoute: typeof KurzyJavascriptRoute
+  KurzyNextjsRoute: typeof KurzyNextjsRoute
+  KurzyReactRoute: typeof KurzyReactRoute
+  KurzyTypescriptRoute: typeof KurzyTypescriptRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRoute,
+  GalerieRoute: GalerieRoute,
+  KontaktRoute: KontaktRoute,
+  KurzyGraphqlRoute: KurzyGraphqlRoute,
+  KurzyJavascriptRoute: KurzyJavascriptRoute,
+  KurzyNextjsRoute: KurzyNextjsRoute,
+  KurzyReactRoute: KurzyReactRoute,
+  KurzyTypescriptRoute: KurzyTypescriptRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +257,43 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/blog",
+        "/galerie",
+        "/kontakt",
+        "/kurzy/graphql",
+        "/kurzy/javascript",
+        "/kurzy/nextjs",
+        "/kurzy/react",
+        "/kurzy/typescript"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/blog": {
+      "filePath": "blog.tsx"
+    },
+    "/galerie": {
+      "filePath": "galerie.tsx"
+    },
+    "/kontakt": {
+      "filePath": "kontakt.tsx"
+    },
+    "/kurzy/graphql": {
+      "filePath": "kurzy/graphql.tsx"
+    },
+    "/kurzy/javascript": {
+      "filePath": "kurzy/javascript.tsx"
+    },
+    "/kurzy/nextjs": {
+      "filePath": "kurzy/nextjs.tsx"
+    },
+    "/kurzy/react": {
+      "filePath": "kurzy/react.tsx"
+    },
+    "/kurzy/typescript": {
+      "filePath": "kurzy/typescript.tsx"
     }
   }
 }
