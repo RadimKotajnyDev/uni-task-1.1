@@ -1,4 +1,4 @@
-import {createSystem, defineConfig} from "@chakra-ui/react";
+import {createSystem, defaultBaseConfig, defineConfig} from "@chakra-ui/react";
 
 const config = defineConfig({
   cssVarsRoot: ":where(:root, :host)",
@@ -34,4 +34,4 @@ const config = defineConfig({
   }
 })
 
-export const system = createSystem(config)
+export const system = createSystem(defaultBaseConfig, config)
